@@ -1,0 +1,989 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile | Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            line-height: 1.7;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid #334155;
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: bold;
+            color: #38bdf8;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #cbd5e1;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #38bdf8;
+        }
+
+        /* General Section */
+        section {
+            padding: 100px 10%;
+            scroll-margin-top: 65px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            color: #38bdf8;
+            margin-bottom: 40px;
+        }
+
+        /* Home */
+        #home {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .home-text h1 {
+            font-size: 60px;
+            color: white;
+        }
+
+        .home-text h2 {
+            color: #38bdf8;
+            margin: 10px 0;
+        }
+
+        .home-text p {
+            color: #94a3b8;
+            max-width: 550px;
+            margin: 20px 0;
+        }
+
+        .profile-img {
+            width: 380px;
+            height: 380px;
+            border-radius: 50%;
+            border: 4px solid #38bdf8;
+            object-fit: cover;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #0284c7;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background: #0369a1;
+        }
+
+        /* About */
+        #about {
+            background: #1e293b;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+            color: #cbd5e1;
+        }
+
+        /* About */
+        #about {
+            background: #1e293b;
+        }
+
+        .about-card {
+            max-width: 850px;
+            margin: auto;
+            padding: 35px;
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        /* Profile Header */
+        .about-header {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            margin-bottom: 25px;
+        }
+
+        .about-icon {
+            width: 85px;
+            height: 85px;
+            background: #1e293b;
+            border: 2px solid #38bdf8;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            flex-shrink: 0;
+        }
+
+        .about-header h2 {
+            color: white;
+            font-size: 26px;
+        }
+
+        .about-header h3 {
+            color: #38bdf8;
+            font-size: 17px;
+        }
+
+        .about-header p {
+            color: #94a3b8;
+            font-size: 14px;
+        }
+
+        /* Divider */
+        .about-card hr {
+            border: none;
+            border-top: 1px solid #334155;
+            margin: 25px 0;
+        }
+
+        /* Heading */
+        .about-heading h3 {
+            color: #38bdf8;
+            margin-bottom: 18px;
+            font-size: 19px;
+        }
+
+        /* Information Grid */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .about-item {
+            background: #1e293b;
+            padding: 16px;
+            border-radius: 10px;
+            border: 1px solid #334155;
+        }
+
+        .about-item span {
+            color: #38bdf8;
+            font-size: 14px;
+        }
+
+        .about-item p {
+            color: #e2e8f0;
+            margin-top: 5px;
+            font-weight: 500;
+        }
+
+        .full-width {
+            grid-column: span 2;
+        }
+
+        /* Interest */
+        .interest-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .interest-list span {
+            background: #1e293b;
+            color: #38bdf8;
+            padding: 9px 15px;
+            border-radius: 20px;
+            border: 1px solid #334155;
+            font-size: 14px;
+        }
+
+        /* Goal */
+        .about-goal {
+            color: #cbd5e1;
+            line-height: 1.9;
+            text-align: justify;
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+            .about-card {
+                padding: 22px;
+            }
+
+            .about-header {
+                gap: 15px;
+            }
+
+            .about-header h2 {
+                font-size: 20px;
+            }
+
+            .about-icon {
+                width: 65px;
+                height: 65px;
+                font-size: 30px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .full-width {
+                grid-column: span 1;
+            }
+        }
+
+        /* Skills */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: #1e293b;
+            padding: 25px;
+            text-align: center;
+            border-radius: 12px;
+            border: 1px solid #334155;
+            transition: 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: #38bdf8;
+        }
+
+        .skill-card h3 {
+            color: #38bdf8;
+        }
+
+        /* Projects */
+        #projects {
+            background: #1e293b;
+        }
+
+        .project-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background: #0f172a;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #334155;
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .project-info {
+            padding: 20px;
+        }
+
+        .project-info h3 {
+            color: #38bdf8;
+            margin-bottom: 10px;
+        }
+
+        .project-info p {
+            color: #94a3b8;
+        }
+
+        /* Education */
+        .education-box {
+            max-width: 700px;
+            margin: auto;
+            padding: 25px;
+            background: #1e293b;
+            border-left: 4px solid #38bdf8;
+            border-radius: 8px;
+        }
+
+        /* Activities */
+        #activities {
+            background: #1e293b;
+        }
+
+        .activity-box {
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+            padding: 25px;
+            background: #0f172a;
+            border-radius: 12px;
+        }
+
+        /* Activities Gallery */
+        .activity-description {
+            text-align: center;
+            color: #94a3b8;
+            margin-bottom: 35px;
+        }
+
+        .activity-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .activity-card {
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-5px);
+            border-color: #38bdf8;
+        }
+
+        .activity-card img {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+        }
+
+        .activity-info {
+            padding: 20px;
+        }
+
+        .activity-info h3 {
+            color: #38bdf8;
+            margin-bottom: 5px;
+        }
+
+        .activity-info p {
+            color: #94a3b8;
+            font-size: 14px;
+        }
+
+        .activity-info .activity-date {
+            color: #64748b;
+            margin-bottom: 10px;
+        }
+
+        /* Contact */
+        #contact {
+            background: #0f172a;
+        }
+
+        .contact-description {
+            text-align: center;
+            color: #94a3b8;
+            margin-top: -20px;
+            margin-bottom: 35px;
+        }
+
+        .contact-container {
+            max-width: 850px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .contact-card {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            padding: 20px;
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            border-color: #38bdf8;
+            background: #26364c;
+        }
+
+        .contact-icon {
+            font-size: 30px;
+            width: 55px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #0f172a;
+            border-radius: 12px;
+            flex-shrink: 0;
+        }
+
+        .contact-card h3 {
+            color: #38bdf8;
+            font-size: 17px;
+        }
+
+        .contact-card p {
+            color: #cbd5e1;
+            font-size: 14px;
+            overflow-wrap: anywhere;
+        }
+
+        .location-box {
+            max-width: 850px;
+            margin: 25px auto 0;
+            padding: 20px;
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .location-box h3 {
+            color: #38bdf8;
+        }
+
+        .location-box p {
+            color: #cbd5e1;
+        }
+
+        .contact-footer {
+            text-align: center;
+            color: #64748b;
+            margin-top: 30px;
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-card {
+                padding: 15px;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+                font-size: 13px;
+            }
+
+            #home {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding-top: 150px;
+            }
+
+            .home-text h1 {
+                font-size: 32px;
+            }
+
+            .profile-img {
+                width: 190px;
+                height: 190px;
+            }
+
+            section {
+                padding: 80px 6%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Menu -->
+    <nav>
+        <div class="logo">MyPortfolio.</div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#activities">Activities</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Home -->
+    <section id="home">
+        <div class="home-text">
+            <h1>นาย วัชชิระ ฟองคำ</h1>
+            <h2>Computer Science Student</h2>
+            <p>
+                นักศึกษาสาขาวิทยาการคอมพิวเตอร์
+                ที่มีความสนใจด้าน Data Science,
+                Machine Learning และการพัฒนาเว็บไซต์
+                พร้อมเรียนรู้และพัฒนาทักษะใหม่ ๆ อยู่เสมอ
+            </p>
+        </div>
+
+        <div>
+            <img src="Snex01.jpg"
+                 alt="My Profile"
+                 class="profile-img">
+        </div>
+    </section>
+
+<!-- About -->
+<section id="about">
+    <h2 class="section-title">About Me</h2>
+
+    <div class="about-card">
+
+        <!-- ชื่อและแนะนำตัว -->
+        <div class="about-header">
+            <div class="about-icon">👨‍🎓</div>
+
+            <div>
+                <h2>นาย วัชชิระ ฟองคำ</h2>
+                <h3>Mr. Watchira Fongkam</h3>
+                <p>Computer Science Student</p>
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- ข้อมูลส่วนตัว -->
+        <div class="about-heading">
+            <h3>📋 ข้อมูลการศึกษา</h3>
+        </div>
+
+        <div class="about-grid">
+
+            <div class="about-item">
+                <span>🏛️ คณะ</span>
+                <p>วิทยาศาสตร์</p>
+            </div>
+
+            <div class="about-item">
+                <span>💻 สาขาวิชา</span>
+                <p>วิทยาการคอมพิวเตอร์</p>
+            </div>
+
+            <div class="about-item">
+                <span>📊 กลุ่มวิชา</span>
+                <p>Data Science</p>
+            </div>
+
+            <div class="about-item">
+                <span>🎓 ชั้นปี</span>
+                <p>ปีที่ 3</p>
+            </div>
+
+            <div class="about-item full-width">
+                <span>🏫 มหาวิทยาลัย</span>
+                <p>มหาวิทยาลัยราชภัฏอุดรธานี</p>
+            </div>
+
+        </div>
+
+        <hr>
+
+        <!-- ความสนใจ -->
+        <div class="about-heading">
+            <h3>💡 ความสนใจด้านเทคโนโลยี</h3>
+        </div>
+
+        <div class="interest-list">
+            <span>🐍 Python Programming</span>
+            <span>🤖 Machine Learning</span>
+            <span>📈 Data Science</span>
+            <span>🌐 Web Development</span>
+            <span>📊 Data Analysis</span>
+        </div>
+
+        <hr>
+
+        <!-- เป้าหมาย -->
+        <div class="about-heading">
+            <h3>🎯 เป้าหมายและสิ่งที่สนใจ</h3>
+        </div>
+
+        <p class="about-goal">
+            มีความสนใจในการศึกษาและพัฒนาความรู้
+            ด้านวิทยาการคอมพิวเตอร์ โดยเฉพาะ Data Science
+            และ Machine Learning เพื่อเรียนรู้การนำเทคโนโลยี
+            มาประยุกต์ใช้ในการวิเคราะห์ข้อมูลและแก้ไขปัญหาจริง
+            พร้อมพัฒนาทักษะและประสบการณ์อย่างต่อเนื่อง
+        </p>
+
+    </div>
+</section>
+
+    <!-- Skills -->
+    <section id="skills">
+        <h2 class="section-title">My Skills</h2>
+
+        <div class="skills-container">
+
+            <div class="skill-card">
+                <h3>Python</h3>
+                <p>Programming</p>
+            </div>
+
+            <div class="skill-card">
+                <h3>Machine Learning</h3>
+                <p>KNN, SVM, Decision Tree</p>
+            </div>
+
+            <div class="skill-card">
+                <h3>Data Science</h3>
+                <p>Data Analysis</p>
+            </div>
+
+            <div class="skill-card">
+                <h3>HTML & CSS</h3>
+                <p>Web Development</p>
+            </div>
+
+            <div class="skill-card">
+                <h3>SQL</h3>
+                <p>Database</p>
+            </div>
+
+            <div class="skill-card">
+                <h3>Tools</h3>
+                <p>VS Code, Google Colab</p>
+            </div>
+        </div> <br>
+        
+        <h2 class="section-title">Soft Skills</h2>
+        <div class="skills-container">
+
+            <div class="skill-card">
+                <h3>communication</h3>
+                <p>การสื่อสาร การทำงานเป็นทีม และการทำงานร่วมกับผู้อื่น</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+        <h2 class="section-title">My Projects</h2>
+
+        <div class="project-container">
+
+            <div class="project-card">
+                <img src="Bank.jpeg" alt="Loan Approval">
+                <div class="project-info">
+                    <h3>Loan Approval Prediction</h3>
+                    <p>
+                        ระบบจำแนกและทำนายผลการอนุมัติสินเชื่อ
+                        ด้วย Machine Learning
+                    </p>
+                    <p>Python / KNN / SVM / Decision Tree / Naive Bayes</p>
+                    <a href="https://loanapprovalclassification-xcv4ptbukan368b3h5mmav.streamlit.app/"target="_blank"rel="noopener noreferrer"class="btn">
+            View Project ↗
+                    </a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="Flower.jpeg" alt="Flower Species Classifier">
+                <div class="project-info">
+                    <h3>Flower Species Classifier</h3>
+                    <p>
+                        ระบบจำแนกชนิดของดอกไม้
+                        ด้วย Machine Learning
+                    </p>
+                    <p>Python / Support Vector Machine (SVM) + RBF Kernel + GridSearchCV </p>
+                    <a href="https://flower-svm-app-q59vzgzes8pwhvgljbzd7b.streamlit.app/"target="_blank"rel="noopener noreferrer"class="btn">
+            View Project ↗
+                    </a>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+        <h2 class="section-title">Education</h2>
+
+        <div class="education-box">
+            <h3>📚ระดับชั้นอนุบาล-ประถมศึกษา</h3>
+            <p>โรงเรียนบ้านหนองบัวเงินหนองบัวทอง</p>
+            <br>
+
+            <h3>🏫ระดับชั้นมัธยมศึกษาตอนต้น</h3>
+            <p>โรงเรียนประจักษ์ศิลปาคาร</p>
+            <br>
+
+            <h3>🏫ระดับชั้นมัธยมศึกษาตอนปลาย</h3>
+            <p>โรงเรียนประจักษ์ศิลปาคาร</p>
+            <br>
+
+            <h3>🎓ระดับปริญญาตรี</h3>
+            <p>คณะวิทยาศาสตร์</p>
+            <p>สาขาวิทยาการคอมพิวเตอร์</p>
+            <p>กลุ่มวิชา Data Science</p>
+            <p>มหาวิทยาลัย : มหาวิทยาลัยราชภัฏอุดรธานี</p>
+            <br>
+        </div>
+    </section>
+
+
+<!-- Activities -->
+<section id="activities">
+    <h2 class="section-title">Activities & Experiences</h2>
+
+    <p class="activity-description">
+        รวบรวมกิจกรรม ประสบการณ์ และการเข้าร่วมงานต่าง ๆ
+        ที่ได้เรียนรู้และพัฒนาตนเองระหว่างการศึกษา
+    </p>
+
+    <div class="activity-container">
+
+                <!-- Activity 1 -->
+        <div class="activity-card">
+            <img src="certificate2.png" alt="กิจกรรมที่ 1">
+
+            <div class="activity-info">
+                <h3>เกียรติบัตร</h3>
+                <p class="activity-date">ปี พ.ศ. 2568</p>
+                <p>
+                    ได้รับการสอบผ่านภาษาอังกฤษในระดับ B1 
+                </p>
+            </div>
+        </div>
+
+                <!-- Activity 2 -->
+        <div class="activity-card">
+            <img src="certificate1.jpg" alt="กิจกรรมที่ 2">
+
+            <div class="activity-info">
+                <h3>เกียรติบัตร</h3>
+                <p class="activity-date">ปี พ.ศ. 2568</p>
+                <p>
+                    ได้รับรางวัลรองชนะเลิศอันดับ 2 การพัฒนาโปรแกรม AI-Machine Learning
+                    โดยใช้โมเดล Deep Learning เพื่อตรวจจับและแยกประเภท Hand Pose Classifier
+                    ด้วยโปรแกรม Pictoblox Ai หัวข้อ "มือวิเศษ"
+                </p>
+            </div>
+        </div>
+
+        <!-- Activity 3 -->
+        <div class="activity-card">
+            <img src="WangDaeng.jpg" alt="กิจกรรมที่ 3">
+
+            <div class="activity-info">
+                <h3>วังแดงเกมส์ ครั้งที่34</h3>
+                <p class="activity-date">ปี พ.ศ. 2567</p>
+                <p>
+                    ได้เข้าร่วมกิจกรรมการแข่งขันกีฬาภายในมหาวิทยาลัย
+                    ได้ร่วมเดินขบวน และรับหน้าที่เป็นผู้นำในการจัดกิจกรรม
+                    รวมถึงรับหน้าที่เป็นผู้แทนสาขาวิทยาการคอมพิวเตอร์
+                </p>
+            </div>
+        </div>
+
+        <!-- Activity 4 -->
+        <div class="activity-card">
+            <img src="mentor2.jpg" alt="กิจกรรมที่ 4">
+
+            <div class="activity-info">
+                <h3>วันวิทยาศาสตร์</h3>
+                <p class="activity-date">ปี พ.ศ. 2567</p>
+                <p>
+                    ได้ร่วมกิจกรรมวันวิทยาศาสตร์
+                    ได้รับหน้าที่เป็นผู้ช่วยสอนและเฝ้าดูแลนักเรียนที่เข้าร่วมกิจกรรม
+                </p>
+            </div>
+        </div>
+
+        <!-- Activity 5 -->
+        <div class="activity-card">
+            <img src="speaker.jpeg" alt="กิจกรรมที่ 5">
+
+            <div class="activity-info">
+                <h3>พิธีกรวันไหว้ครู</h3>
+                <p class="activity-date">ปี พ.ศ. 2568</p>
+                <p>
+                    ได้รับหน้าที่เป็นพิธีกรในงานวันไหว้ครูของสาขาวิทยาการคอมพิวเตอร์
+                </p>
+            </div>
+        </div>
+
+        <!-- Activity 6 -->
+        <div class="activity-card">
+            <img src="design1.jpeg" alt="กิจกรรมที่ 6">
+
+            <div class="activity-info">
+                <h3>ออกแบบซุ้มงานรับปริญญา</h3>
+                <p class="activity-date">ปี พ.ศ. 2569</p>
+                <p>
+                    ได้รับหน้าที่เป็นผู้ออกแบบซุ้มงานรับปริญญาของสาขาวิทยาการคอมพิวเตอร์
+                    และเป็นเฮดดีไซน์เนอร์ในการออกแบบซุ้มงานรับปริญญา
+                </p>
+            </div>
+        </div>
+
+        <!-- Activity 7 -->
+        <div class="activity-card">
+            <img src="design2.jpg" alt="กิจกรรมที่ 7">
+
+            <div class="activity-info">
+                <h3>ออกแบบซุ้มงานบายเนียร์รุ่นพี่</h3>
+                <p class="activity-date">ปี พ.ศ. 2569</p>
+                <p>
+                    ได้รับหน้าที่เป็นผู้ออกแบบซุ้มงานบายเนียร์รุ่นพี่ของสาขาวิทยาการคอมพิวเตอร์
+                    และเป็นเฮดดีไซน์เนอร์ในการออกแบบซุ้มงานบายเนียร์
+                </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- Contact -->
+<section id="contact">
+    <h2 class="section-title">📬 Contact Me</h2>
+
+    <p class="contact-description">
+        ช่องทางการติดต่อและติดตามผลงานของฉัน
+    </p>
+
+    <div class="contact-container">
+
+        <!-- Email -->
+        <a href="mailto:snewatchira@gmail.com"
+           class="contact-card">
+            <div class="contact-icon">📧</div>
+            <div>
+                <h3>Email</h3>
+                <p>snewatchira@gmail.com</p>
+            </div>
+        </a>
+
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/watchira.fongcham?locale=th_TH" target="_blank"
+           class="contact-card">
+            <div class="contact-icon">📘</div>
+            <div>
+                <h3>Facebook</h3>
+                <p>Watchira Fongcham</p>
+            </div>
+        </a>
+
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/_snexx/"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="contact-card">
+            <div class="contact-icon">📸</div>
+            <div>
+                <h3>Instagram</h3>
+                <p>_snexx</p>
+            </div>
+        </a>
+
+        <!-- Line -->
+        <div class="contact-card">
+            <div class="contact-icon">💬</div>
+            <div>
+                <h3>Line ID</h3>
+                <p>0633292447</p>
+            </div>
+        </div>
+
+        <!-- GitHub -->
+        <a href="https://github.com/Snex05"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="contact-card">
+            <div class="contact-icon">💻</div>
+            <div>
+                <h3>GitHub</h3>
+                <p>Snex05</p>
+            </div>
+        </a>
+
+        <!-- Phone -->
+        <a href="tel:0633292447"
+           class="contact-card">
+            <div class="contact-icon">📱</div>
+            <div>
+                <h3>Phone</h3>
+                <p>063-329-2447</p>
+            </div>
+        </a>
+
+    </div>
+
+    <!-- Location -->
+    <div class="location-box">
+        <h3>📍 Location</h3>
+        <p>อุดรธานี ประเทศไทย</p>
+    </div>
+
+    <p class="contact-footer">
+        ✨ Feel free to contact me!
+    </p>
+</section>
+
+    
+    <footer>
+        <p>© 2026 My Portfolio | Designed by Me</p>
+    </footer>
+
+</body>
+</html>
